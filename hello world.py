@@ -26,7 +26,7 @@ print("你的分数是：%d" % score)
 #       "==========================", sep="\n")
 
 files = open('D:\my_python_trial\myfile.txt', "w")  # "w"
-files.write("check this out")
+files.write("lets do this")
 files.close()
 
 with open('D:\my_python_trial\myfile.txt', 'r') as f:
