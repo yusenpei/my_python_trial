@@ -1,5 +1,8 @@
 # D:\python
 # encoding=utf-8
+
+import time
+
 print("hello world")
 print("hello worldp")
 name = 'jack'
@@ -18,13 +21,14 @@ print("你的分数是：%d" % score)
 # addr1 = input("请输入您的公司地址：")
 #
 # print("系统正在生成您的名片，请稍候")
+# time.sleep(3)
 # print("==========================",
 #       "姓名：%s" % name1,
 #       "Q Q：%s" % QQ1,
 #       "手机：%s" % phone1,
 #       "地址：%s" % addr1,
 #       "==========================", sep="\n")
-
+#
 files = open('D:\my_python_trial\myfile.txt', "w")  # "w"
 files.write("lets do this")
 files.close()
@@ -35,4 +39,9 @@ with open('D:\my_python_trial\myfile.txt', 'r') as f:
 files1 = open('D:\my_python_trial\myfile1.txt', "w")  # "w"
 files1.write("data from the other file = %s"%files_context)
 files1.close()
+100*100
+
+
+
+
 
