@@ -1,1 +1,91 @@
-lets do this
+-------------------------------------------------------------------------------
+-- Copyright 2016 SNPAS as an unpublished work.
+--
+-- State Nuclear Power Automation System Engineering Company
+-- No. 428 East Jiangchuan Road
+-- Shanghai, 200241, PRC
+---------------------------- All Rights Reserved ------------------------------
+--      STATE NUCLEAR POWER AUTOMATION SYSTEM ENGINEERING COMPANY
+--                     PROPRIETARY INFORMATION
+-- THIS DOCUMENT CONTAINS PROPRIETARY AND PRIVILEGED INFORMATION OF STATE
+-- NUCLEAR POWER AUTOMATION SYSTEM ENGINEERING COMPANY AND SHALL NOT BE
+-- DISCLOSED OR USED FOR THE BENEFIT OF OTHERS WITHOUT THE PRIOR WRITTEN
+-- PERMISSION OF STATE NUCLEAR POWER AUTOMATION SYSTEM ENGINEERING COMPANY.
+--
+-- DESTRUCTION NOTICE: DESTROY BY ANY METHOD THAT WILL PREVENT DISCLOSURE
+-- OF CONTENTS OR RECONSTRUCTION OF THE DOCUMENT.
+--
+---------------------------- All Rights Reserved ------------------------------
+--
+-- File Name: asc_tick.vhd
+--
+-------------------------------------------------------------------------------
+--
+-- Module Description: ASC module initialization.
+-- now default time constant is 1.7 ms, this depend on IO sample time
+--
+-------------------------------------------------------------------------------
+library ieee;
+   use ieee.std_logic_1164.all;
+   use work.aspl_common.all;
+   use work.asc_pkg.all;
+
+   entity asc_tick is
+      generic (
+         time_constant                           : natural range 0 to 63 := 16);
+      port (
+         sys_clock                               : in  std_logic;
+         sys_reset                               : in  boolean;
+         us_tick                                 : out boolean;
+         hundred_us_tick                         : out boolean;
+         hundred_ms_tick                         : out boolean;
+         time_constant_tick                      : out boolean);
+   end entity asc_tick;
+
+   architecture rtl of asc_tick is
+   begin
+     ---------------------------------------------------------
+      ---- us tick for other timers ---------------------------
+      ---------------------------------------------------------
+      tick_u0: entity work.tick (rtl)
+         port map(
+            clock       => sys_clock,
+            reset       => sys_reset,
+            ce          => true,
+            tick        => us_tick,
+            reset_val   => 49);
+
+      ---------------------------------------------------------
+      ---- 100 us tick for other timers -----------------------
+      ---------------------------------------------------------
+      tick_u1: entity work.tick (rtl)
+         port map(
+            clock       => sys_clock,
+            reset       => sys_reset,
+            ce          => us_tick,
+            tick        => hundred_us_tick,
+            reset_val   => 99);
+
+      ---------------------------------------------------------
+      ---- 10 ms tick for other timers ----------------
+      ---------------------------------------------------------
+      tick_u2: entity work.tick
+         port map(
+            clock       => sys_clock,
+            reset       => sys_reset,
+            ce          => hundred_us_tick,
+            tick        => hundred_ms_tick,
+            reset_val   => 999);
+
+      ---------------------------------------------------------
+      ---- time constant tick for other timers ----------------
+      ---------------------------------------------------------
+      tick_u3: entity work.tick
+         port map(
+            clock       => sys_clock,
+            reset       => sys_reset,
+            ce          => hundred_us_tick,
+            tick        => time_constant_tick,
+            reset_val   => time_constant);
+
+   end architecture rtl;

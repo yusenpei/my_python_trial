@@ -1,1 +1,11 @@
-data from the other file = lets do this
+ asc_tick is
+      generic (
+         time_constant                           : natural range 0 to 63 := 16);
+      port (
+         sys_clock                               : in  std_logic;
+         sys_reset                               : in  boolean;
+         us_tick                                 : out boolean;
+         hundred_us_tick                         : out boolean;
+         hundred_ms_tick                         : out boolean;
+         time_constant_tick                      : out boolean);
+   
