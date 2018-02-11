@@ -1,4 +1,6 @@
- asc_tick is
+===============
+2018 new year
+COPYRIGHT@SNAPS===============entity asc_tick is
       generic (
          time_constant                           : natural range 0 to 63 := 16);
       port (
@@ -8,4 +10,4 @@
          hundred_us_tick                         : out boolean;
          hundred_ms_tick                         : out boolean;
          time_constant_tick                      : out boolean);
-   
+   end entity

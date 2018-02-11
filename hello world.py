@@ -47,15 +47,20 @@ import re
 # print("%d"%b)
 key_word_entity = 'entity'
 key_word_end_entity = 'end entity'
+header =("="*15+"\n2018 new year"+"\nCOPYRIGHT@SNAPS"+\n"="*15)
 files = open('D:\my_python_trial\myfile.txt', "r")  # "r"
 all_content = files.read()
 entity_header_pattern = re.compile(key_word_entity+'(.*?)'+key_word_end_entity,re.S)
 # entity_header = entity_header_pattern.findall(all_content,text)
-print("entity_header")
+# print("entity_header")
 files1 = open('D:\my_python_trial\myfile1.txt', "w")  # "w"
-files1.write('\n'.join(entity_header_pattern.findall(all_content)))
-files1.write()
+files1.write(header +key_word_entity+'\n'.join(entity_header_pattern.findall(all_content)) + key_word_end_entity)
 
+# for line in header:
+#     files1.write(line+'\n')
+
+# files1.seek(0, 2)
+# files1.write(key_word_end_entity)
 files.close()
 files1.close()
 
