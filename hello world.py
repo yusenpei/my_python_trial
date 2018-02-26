@@ -52,7 +52,7 @@ header =("="*15+"\n2018 new year"+"\nCOPYRIGHT@SNAPS\n"+"="*15+'\n')
 files = open('D:\my_python_trial\myfile.txt', "r")  # "r"
 all_content = files.read()
 entity_header_pattern  = re.compile(key_word_entity+'(.*?)'+key_word_end_entity,re.S)
-entity_inout_pattern   = re.compile('\n'+'(.*?)'+';',re.S)
+entity_arrow_pattern   = re.compile('=>'+'(.*?)'+';',re.S)
 # entity_header = entity_header_pattern.findall(all_content,text)
 # print("entity_header")
 files1 = open('D:\my_python_trial\myfile1.txt', "w")  # "w"
@@ -64,10 +64,18 @@ with open('D:\my_python_trial\myfile1.txt','r') as new_base:
 with open('D:\my_python_trial\myfile2.txt','w') as files2:
    for line in new_base_lines:
        line = re.sub(':','=>',line,1)
-       # if ":" in line:
-       #    line = line.replace(":","=>")
-       files2.write(line)
+       if key_word_generic in line:
+         line = line.replace(key_word_generic,key_word_generic+'\b'+'map')
+       if 'port' in line:
+         line = line.replace('port','port'+'\b'+'map')
+       if '=>'in line:
+         lable = line.split('=>')[0]
+         lable1 = lable.strip()
+         line  = lable+'=>'+lable1+',\n'
+       if key_word_end_entity not in line:
+         files2.write(line)
        # files2.write(line)
+    line[2] = line[2].replace(',')
 
 
 
@@ -85,6 +93,5 @@ with open('D:\my_python_trial\myfile2.txt','w') as files2:
 
 files.close()
 files1.close()
-
 files2.close()
 
