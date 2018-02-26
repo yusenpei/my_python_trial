@@ -3,6 +3,7 @@
 
 import time
 import re
+import sys
 
 # print("hello world")
 # print("hello worldp")
@@ -70,13 +71,13 @@ with open('D:\my_python_trial\myfile2.txt','w') as files2:
          line = line.replace('port','port'+'\b'+'map')
        if '=>'in line:
          lable = line.split('=>')[0]
-         lable1 = lable.strip()
-         line  = lable+'=>'+lable1+',\n'
+         instant_signal_name=input("instantiation signal name?")
+         line  = lable+'=>'+instant_signal_name+',\n'
+       if 'port' in line:
+         print(sys._getframe().f_lineno)
        if key_word_end_entity not in line:
          files2.write(line)
-       # files2.write(line)
-    line[2] = line[2].replace(',')
-
+    # line[2] = line[2].replace(',')234
 
 
 
