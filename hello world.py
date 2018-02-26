@@ -45,23 +45,46 @@ import re
 # b=100
 # b += 1
 # print("%d"%b)
-key_word_entity = 'entity'
+key_word_entity = '   entity'
 key_word_end_entity = 'end entity'
-header =("="*15+"\n2018 new year"+"\nCOPYRIGHT@SNAPS"+\n"="*15)
+key_word_generic = 'generic'
+header =("="*15+"\n2018 new year"+"\nCOPYRIGHT@SNAPS\n"+"="*15+'\n')
 files = open('D:\my_python_trial\myfile.txt', "r")  # "r"
 all_content = files.read()
-entity_header_pattern = re.compile(key_word_entity+'(.*?)'+key_word_end_entity,re.S)
+entity_header_pattern  = re.compile(key_word_entity+'(.*?)'+key_word_end_entity,re.S)
+entity_inout_pattern   = re.compile('\n'+'(.*?)'+';',re.S)
 # entity_header = entity_header_pattern.findall(all_content,text)
 # print("entity_header")
 files1 = open('D:\my_python_trial\myfile1.txt', "w")  # "w"
 files1.write(header +key_word_entity+'\n'.join(entity_header_pattern.findall(all_content)) + key_word_end_entity)
+files1.close()
 
-# for line in header:
-#     files1.write(line+'\n')
+with open('D:\my_python_trial\myfile1.txt','r') as new_base:
+    new_base_lines = new_base.readlines()
+with open('D:\my_python_trial\myfile2.txt','w') as files2:
+   for line in new_base_lines:
+       line = re.sub(':','=>',line,1)
+       # if ":" in line:
+       #    line = line.replace(":","=>")
+       files2.write(line)
+       # files2.write(line)
 
-# files1.seek(0, 2)
-# files1.write(key_word_end_entity)
+
+
+
+# print(try_s)
+# list0 = try_s[1]
+# list1 = try_s[2]
+# list2 = try_s[3]
+# list3 = try_s[4]
+# print(list0)
+# print(list1)
+# print(list2)
+# print(list3)
+# files1.write(header +key_word_entity+'\n'.join(entity_header_pattern.findall(all_content)) + key_word_end_entity)
+
 files.close()
 files1.close()
 
+files2.close()
 
