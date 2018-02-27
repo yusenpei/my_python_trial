@@ -46,7 +46,7 @@ import sys
 # b=100
 # b += 1
 # print("%d"%b)
-key_word_entity = '   entity'
+key_word_entity = 'entity'
 key_word_end_entity = 'end entity'
 key_word_generic = 'generic'
 header =("="*15+"\n2018 new year"+"\nCOPYRIGHT@SNAPS\n"+"="*15+'\n')
