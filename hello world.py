@@ -62,6 +62,7 @@ files1.close()
 
 with open('D:\my_python_trial\myfile1.txt','r') as new_base:
     new_base_lines = new_base.readlines()
+    new_base_lines[-2]=new_base_lines[-2].replace(')',')end')
 with open('D:\my_python_trial\myfile2.txt','w') as files2:
    for line in new_base_lines:
        line = re.sub(':','=>',line,1)
@@ -72,9 +73,12 @@ with open('D:\my_python_trial\myfile2.txt','w') as files2:
        if '=>'in line:
          lable = line.split('=>')[0]
          instant_signal_name=input("instantiation signal name?")
-         line  = lable+'=>'+instant_signal_name+',\n'
-       if 'port' in line:
-         print(sys._getframe().f_lineno)
+         if ')end'in line:
+            line  = lable+'=>'+instant_signal_name+');\n'
+         elif ')'in line:
+            line  = lable+'=>'+instant_signal_name+')\n'
+         else:
+            line  = lable+'=>'+instant_signal_name+',\n'
        if key_word_end_entity not in line:
          files2.write(line)
     # line[2] = line[2].replace(',')234

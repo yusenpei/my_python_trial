@@ -4,11 +4,11 @@ COPYRIGHT@SNAPS
 ===============
    entity asc_tick is
       genericmap (
-         time_constant                           =>88,
+         time_constant                           =>234)
       portmap (
-         sys_clock                               =>88,
-         sys_reset                               =>88,
-         us_tick                                 =>88,
-         hundred_us_tick                         =>88,
-         hundred_ms_tick                         =>88,
-         time_constant_tick                      =>888,
+         sys_clock                               =>2,
+         sys_reset                               =>34,
+         us_tick                                 =>234,
+         hundred_us_tick                         =>234,
+         hundred_ms_tick                         =>23,
+         time_constant_tick                      =>23);
