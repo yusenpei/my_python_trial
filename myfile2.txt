@@ -2,13 +2,13 @@
 2018 new year
 COPYRIGHT@SNAPS
 ===============
-   entity asc_tick is
+tryme:   entity asc_tick is
       genericmap (
-         time_constant                           =>234)
+         time_constant                           =>tt)
       portmap (
-         sys_clock                               =>2,
-         sys_reset                               =>34,
-         us_tick                                 =>234,
-         hundred_us_tick                         =>234,
-         hundred_ms_tick                         =>23,
-         time_constant_tick                      =>23);
+         sys_clock                               =>yy,
+         sys_reset                               =>tt,
+         us_tick                                 =>yy,
+         hundred_us_tick                         =>gg,
+         hundred_ms_tick                         =>gg,
+         time_constant_tick                      =>ggg);

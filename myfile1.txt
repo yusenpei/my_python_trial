@@ -2,7 +2,7 @@
 2018 new year
 COPYRIGHT@SNAPS
 ===============
-   entity asc_tick is
+tryme:   entity asc_tick is
       generic (
          time_constant                           : natural range 0 to 63 := 16);
       port (

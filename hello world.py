@@ -57,7 +57,8 @@ entity_arrow_pattern   = re.compile('=>'+'(.*?)'+';',re.S)
 # entity_header = entity_header_pattern.findall(all_content,text)
 # print("entity_header")
 files1 = open('D:\my_python_trial\myfile1.txt', "w")  # "w"
-files1.write(header +key_word_entity+'\n'.join(entity_header_pattern.findall(all_content)) + key_word_end_entity)
+instance_name = input('instance name?')
+files1.write(header +instance_name+':'+key_word_entity+'\n'.join(entity_header_pattern.findall(all_content)) + key_word_end_entity)
 files1.close()
 
 with open('D:\my_python_trial\myfile1.txt','r') as new_base:
@@ -65,7 +66,8 @@ with open('D:\my_python_trial\myfile1.txt','r') as new_base:
     new_base_lines[-2]=new_base_lines[-2].replace(')',')end')
 with open('D:\my_python_trial\myfile2.txt','w') as files2:
    for line in new_base_lines:
-       line = re.sub(':','=>',line,1)
+       if key_word_entity not in line:
+         line = re.sub(':','=>',line,1)
        if key_word_generic in line:
          line = line.replace(key_word_generic,key_word_generic+'\b'+'map')
        if 'port' in line:
