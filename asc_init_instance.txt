@@ -2,7 +2,7 @@
 2018 new year
 COPYRIGHT@SNAPS
 ===============
-try me4:entity asc_tick is
+try me 6:entity asc_tick(rtl)
       genericmap (
          time_constant                           =>33)
       portmap (
@@ -11,4 +11,4 @@ try me4:entity asc_tick is
          us_tick                                 =>us_tick,
          hundred_us_tick                         =>hundred_us_tick,
          hundred_ms_tick                         =>hundred_ms_tick,
-         time_constant_tick                      =>time_3p3_ms_tick);
+         time_constant_tick                      =>time_3p3_tick);

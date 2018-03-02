@@ -74,6 +74,8 @@ def generate_instance(module_name):
              line = re.sub(':','=>',line,1)
            if key_word_generic in line:
              line = line.replace(key_word_generic,key_word_generic+'\b'+'map')
+           if ' is\n' in line:
+             line = line.replace(' is\n','(rtl)\n')
            if 'port' in line:
              line = line.replace('port','port'+'\b'+'map')
            if '=>'in line:
@@ -85,7 +87,7 @@ def generate_instance(module_name):
              else:
                 instant_signal_name = instant_signal_name
              if ')end'in line:
-                line  = lable+'=>'+instant_signal_name+');\n'#之前的倒数第二行，应是被例化后的最后一行，需要加‘：’
+                line  = lable+'=>'+instant_signal_name+');\n'#之前的倒数第二行，应是被例化后的最后一行，需要加‘;’
              elif ')'in line:
                 line  = lable+'=>'+instant_signal_name+')\n'
              else:
@@ -97,5 +99,6 @@ def generate_instance(module_name):
     files1.close()
     files2.close()
     return files2
+
 module_name1 = input('需要例化的模块名：')
 generate_instance(module_name1)

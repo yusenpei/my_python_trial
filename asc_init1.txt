@@ -2,7 +2,7 @@
 2018 new year
 COPYRIGHT@SNAPS
 ===============
-try me4:entity asc_tick is
+try me 6:entity asc_tick is
       generic (
          time_constant                           : natural range 0 to 63 := 16);
       port (
